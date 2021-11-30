@@ -1,17 +1,17 @@
 const Discord = require ('discord.js')
-const delta = new Discord.Client();
+const client = new Discord.Client();
 const config = require ('./config.json')
 
 
-delta.on('ready', function(){
-    console.log(`${delta.user.tag} is up`)
+client.on('ready', function(){
+    console.log(`${client.user.tag} is up`)
 
 
 })
 
 
 
-delta.on("message", message => {
+client.on("message", message => {
     if(message.author.bot) return;
 
     if(message.channel.id === config.twitter) { // twitter 
@@ -147,7 +147,7 @@ delta.on("message", message => {
             message.channel.send(embed3)
             message.delete()
         }
-    } if(message.channel.id === config.dani) { // darkchat
+    } if(message.channel.id === config.mhntoallaxis) { // darkchat
         message.channel.send(message.content, message.attachments.first())
         message.delete({ timeout: 1500 }) //DONT CHANGE TIME POSSIBLE BUGS
     } if(message.channel.id === config.darkchat){ 
@@ -223,4 +223,4 @@ delta.on("message", message => {
 })
 
 
-delta.login(config.token)
+client.login(config.token)
